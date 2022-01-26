@@ -46,11 +46,11 @@ def kmean(lst1, k):
 #calculate Delta_epsilon
 def delta_epsilon(theta, p_t, q_t):
     """
-    implementation of the \Delta_epsilon function as described on pg. 5
+    implementation of the Delta_epsilon function as described on pg. 5
     :param theta: given slope
     :param p_t: first set of data that user inputs/the p_t variable on pg. 5
     :param q_t: second set of data that user inputs/the q_t variable on pg. 5
-    :return: \Delta q_t - \theta \Delta p_t
+    :return: Delta q_t - theta Delta p_t
     """
     return np.subtract(np.diff(q_t), theta * np.diff(p_t))
 #print(delta_epsilon(2.,p_t,q_t))
