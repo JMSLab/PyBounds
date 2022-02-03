@@ -1,7 +1,7 @@
 """Main file of the package"""
-# from .log import init_logger
+#from .log import init_logger
 
-# logger = init_logger('main.log')
+#logger = init_logger('main.log')
 # NEEDS TESTING!!!!!
 
 
@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 
 # import data: p_t, q_t
-data = pd.read_csv('roberts_schlenker_2013.csv')  # change dataset if needed to test
+data = pd.read_csv("/Users/nathansun/Documents/Github/PyBounds/PyBounds/roberts_schlenker_2013.csv")  # change dataset if needed to test
 df = pd.DataFrame(data)
 p_t = df.iloc[:, 0]
 q_t = df.iloc[:, 1]
@@ -120,7 +120,7 @@ def add(a, b):
     :return: The addition of the two number
     :rtype: float
     """
-    # logger.debug('add(%s, %s)' % (a, b))
+    #logger.debug('add(%s, %s)' % (a, b))
     return a + b
 
 

@@ -28,7 +28,7 @@
     ├── log  -> A directory that use to log everything in development
     │   └── main.log
     ├── __log.py -> Logger come from here
-    ├── main.py -> Main functions care here
+    ├── pyBounds.py -> Main functions care here
     └── tests -> All test file
         ├── __init__.py
         └── test_main.py
@@ -38,7 +38,7 @@
 
 """
 from .__version__ import *
-from .main import add
+from .pyBounds import add
 
 # All your function that need to be accessible
 __all__ = ['add']
