@@ -16,13 +16,14 @@ q_t = df.iloc[:, 1]
 
 
 class Bounds:
-    def __init__(self, p_t, q_t, k = np.inf, ngridpoints = 1000):
+    def __init__(self, p_t, q_t, k = np.inf, B = None, ngridpoints = 1000):
         self.p = p_t
         self.q = q_t
         if k < 1:
             raise Exception("Value k < 1, too small")
         else:
             self.k = k
+        self.B = B
         self.ngridpoints = ngridpoints
     # implementation of k-mean
 
@@ -86,17 +87,19 @@ class Bounds:
             # calculate \underline{\theta_k}, \overline{\theta_k} as defined in Prop. 2
             return
 
-    def intervals(self, B = None):
-        if B is None:
-            B = self.underline_B()
+    def intervals(self):
+        if self.B is None:
+            self.B = self.underline_B()
         """
         :param B: upper bound B
         :param ngridpoints: finiteness of grid that user provides
         :return: for each i in the range [underline_B, B], output [underline{theta}_k, overline{theta}_k]
         """
         array_of_intervals = []
-        for value in range(self.underline_B(), B, (B - self.underline_B()) / self.ngridpoints):
-            array_of_intervals.append(self.Theta_hat_k_B(value))
+        i = self.underline_B()
+        while i < self.B:
+            array_of_intervals.append(self.Theta_hat_k_B(i))
+            i += (self.B - self.underline_B()) / self.ngridpoints
         return array_of_intervals
 
     def plot(self):
@@ -123,4 +126,4 @@ def add(a, b):
 
 if __name__ == '__main__':
     bounds_data = Bounds(p_t, q_t)
-    # print(bounds_data.delta_epsilon(6))
+    print(bounds_data.delta_epsilon(5))
