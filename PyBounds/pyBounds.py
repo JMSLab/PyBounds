@@ -25,7 +25,7 @@ class Bounds:
         self.p = p_t
         self.q = q_t
         if k < 1:
-            raise Exception("Value k < 1, too small")
+            raise Exception("Requires k>=1")
         else:
             self.k = k
         self.B = B
