@@ -14,7 +14,7 @@
 
     :Example:
 
-    >>> from YOUR_PACKAGE_NAME import add
+    >>> from PyBounds import add
     >>> add(1, 1)
     2
 
