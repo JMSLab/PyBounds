@@ -1,27 +1,14 @@
 """Main file of the package"""
-#from .log import init_logger
+# from .log import init_logger
 
-#logger = init_logger('main.log')
+# logger = init_logger('main.log')
 # NEEDS TESTING!!!!!
 
-
-import pandas as pd
 import numpy as np
-import requests
-import io
-
-# import data: p_t, q_t
-url = "https://raw.githubusercontent.com/JMSLab/PyBounds/870170743f155b3a9da680ec64e0d5079e266601/PyBounds/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABQYAQ7N7L2PIVTKPDHHG7WWYQEWC6A"
-download = requests.get(url).content
-
-data = pd.read_csv(io.StringIO(download.decode('utf-8')))
-df = pd.DataFrame(data)
-p_t = df.iloc[:, 0]
-q_t = df.iloc[:, 1]
 
 
 class Bounds:
-    def __init__(self, p_t, q_t, k = np.inf, B = None, ngridpoints = 1000):
+    def __init__(self, p_t, q_t, k=np.inf, B=None, ngridpoints=1000):
         self.p = p_t
         self.q = q_t
         if k < 1:
@@ -30,6 +17,7 @@ class Bounds:
             self.k = k
         self.B = B
         self.ngridpoints = ngridpoints
+
     # implementation of k-mean
 
     @staticmethod
@@ -113,22 +101,3 @@ class Bounds:
         """
         # returns a plot of B vs. \theta similar to Figure 3
         return
-
-def add(a, b):
-    """Add two number.
-    This return the Addition of these 2 numbers.
-    You will never want to use this function because it's just an example.
-    :param a: First Number
-    :type a: float
-    :param b: Second Number
-    :type b: float
-    :return: The addition of the two number
-    :rtype: float
-    """
-    #logger.debug('add(%s, %s)' % (a, b))
-    return a + b
-
-
-if __name__ == '__main__':
-    bounds_data = Bounds(p_t, q_t)
-    print(bounds_data.delta_epsilon(5))

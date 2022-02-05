@@ -12,12 +12,6 @@
     occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
     id est laborum.
 
-    :Example:
-
-    >>> from PyBounds import add
-    >>> add(1, 1)
-    2
-
     Package structure
     -----------------
 
@@ -28,7 +22,7 @@
     ├── log  -> A directory that use to log everything in development
     │   └── main.log
     ├── __log.py -> Logger come from here
-    ├── pyBounds.py -> Main functions care here
+    ├── pyBounds.py -> Main functions stored here
     └── tests -> All test file
         ├── __init__.py
         └── test_main.py
@@ -38,9 +32,9 @@
 
 """
 from .__version__ import *
-from .pyBounds import add
+# from .pyBounds import add
 
 # All your function that need to be accessible
-__all__ = ['add']
+# __all__ = ['add']
 
 
