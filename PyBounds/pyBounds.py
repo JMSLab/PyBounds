@@ -8,14 +8,17 @@ import numpy as np
 
 
 class Bounds:
-    def __init__(self, p_t, q_t, k=np.inf, B=None, ngridpoints=1000):
+    def __init__(self, p_t, q_t, k=np.inf, maxB=None, ngridpoints=1000):
         self.p = p_t
         self.q = q_t
         if k < 1:
             raise Exception("Requires k>=1")
         else:
             self.k = k
-        self.B = B
+        if maxB is None:
+            self.maxB = 2 * self.underline_B()
+        else:
+            self.maxB = maxB
         self.ngridpoints = ngridpoints
 
     # implementation of k-mean
@@ -56,19 +59,21 @@ class Bounds:
 
     def underline_B(self):
         """
-        case k = infty uses B_tilde as defined above
-        case k in (1, infty): implement the definitions of underline{B} as stated in Proposition 1 and Proposition 2
+        case k = infinity uses B_tilde as defined above
+        case k in (1, infinity): implement the definitions of underline{B} as stated in Proposition 1 and Proposition 2
 
         :return: returns the underline_{B_k} operation as defined in Propositions 1 and 2
         """
         if self.k == np.inf:
-            return
+            return 0
+            # temporary placeholder to ensure program runs
         else:
-            return
+            return 0
+            # temporary placeholder to ensure program runs
 
-    def Theta_hat_k_B(self, value):
+    def Theta_hat_k_B(self, B):
         """
-        :param value: value provided
+        :param B: upper bound B provided
         :return: output [underline{theta}_k, overline{theta}_k] for a given value
             """
         if self.k == np.inf:
@@ -81,18 +86,14 @@ class Bounds:
             return
 
     def intervals(self):
-        if self.B is None:
-            self.B = self.underline_B()
         """
-        :param B: upper bound B
-        :param ngridpoints: finiteness of grid that user provides
         :return: for each i in the range [underline_B, B], output [underline{theta}_k, overline{theta}_k]
         """
         array_of_intervals = []
         i = self.underline_B()
-        while i < self.B:
+        while i < self.maxB:
             array_of_intervals.append(self.Theta_hat_k_B(i))
-            i += (self.B - self.underline_B()) / self.ngridpoints
+            i += (self.maxB - self.underline_B()) / self.ngridpoints
         return array_of_intervals
 
     def plot(self):
