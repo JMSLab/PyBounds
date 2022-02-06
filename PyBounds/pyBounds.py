@@ -87,7 +87,7 @@ class Bounds:
 
     def intervals(self):
         """
-        :return: for each i in the range [underline_B, B], output [underline{theta}_k, overline{theta}_k]
+        :return: for each i in the range [underline_B, maxB], output [underline{theta}_k, overline{theta}_k]
         """
         array_of_intervals = []
         i = self.underline_B()
