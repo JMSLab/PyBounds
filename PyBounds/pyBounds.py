@@ -82,7 +82,7 @@ class Bounds:
             def f(theta):
                 return self.M_hat_k(theta) - B
 
-            sol = scipy.optimize.root_scalar(f, x0=0, x1=-1)
+            sol = scipy.optimize.root_scalar(f, x0=-2, x1=-1)
             return sol.root
 
     def overline_theta(self, B):
@@ -98,7 +98,7 @@ class Bounds:
             def f(theta):
                 return self.M_hat_k(theta) - B
 
-            sol = scipy.optimize.root_scalar(f, x0=0, x1=1)
+            sol = scipy.optimize.root_scalar(f, x0=2, x1=1)
             return sol.root
 
     def underline_B(self):
@@ -137,7 +137,7 @@ class Bounds:
         while i <= self.maxB:
             array_of_intervals.append(self.Theta_hat_k_B(i))
             i += (self.maxB - self.underline_B()) / self.ngridpoints
-        print(len(array_of_intervals))
+        # print(len(array_of_intervals))
         return array_of_intervals
 
     def plot(self):
@@ -155,6 +155,9 @@ class Bounds:
             upper_bounds.append(self.overline_theta(i))
             i = i + (self.maxB-self.underline_B())/self.ngridpoints
         plt.plot(x, lower_bounds, linewidth=.3)
-        # plt.plot(x, upper_bounds, linewidth=.3)
-        plt.savefig('test.png')
+        plt.xlim([0, self.maxB])
+        plt.plot(x, upper_bounds, linewidth=.3)
+        plt.ylim(top=0)
+        #plt.axhline(y=0, color='r', linestyle='-')
+        plt.savefig('Bounds Interval Plot k=' + str(self.k) + ".png")
         plt.show()
