@@ -40,4 +40,4 @@ jobs:
         flags: unittests
     - name: Run tests
       run: |
-        ./tests/test_main.py
+        ../test_main.py
