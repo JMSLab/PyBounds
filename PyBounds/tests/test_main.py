@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 import io
 
-from .. import pyBounds
+import PyBounds.pyBounds as pyBounds
 
 url = "https://raw.githubusercontent.com/JMSLab/PyBounds/b9ab4a7718e36a862cd4fc362e085c39149b05bb/PyBounds/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSFNAYKQWY7QYRYMLLYARG4YRLLEFA"
 download = requests.get(url).content
