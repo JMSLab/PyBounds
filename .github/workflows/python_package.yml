@@ -38,3 +38,5 @@ jobs:
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
         flags: unittests
+    - name: Run tests
+      run: python test_main.py

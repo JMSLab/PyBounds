@@ -22,6 +22,8 @@
     ├── log  -> A directory that use to log everything in development
     │   └── main.log
     ├── __log.py -> Logger come from here
+    ├── examples -> Data calculations stored here
+        ├── examples.py -> main file
     ├── pyBounds.py -> Main functions stored here
     └── tests -> All test file
         ├── __init__.py

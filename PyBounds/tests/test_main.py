@@ -6,13 +6,13 @@ import io
 
 from .. import pyBounds
 
-url = "https://raw.githubusercontent.com/JMSLab/PyBounds/master/PyBounds/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUBEMYZWDWOTESJ3ISGYRI737Q"
+url = "https://raw.githubusercontent.com/JMSLab/PyBounds/b9ab4a7718e36a862cd4fc362e085c39149b05bb/PyBounds/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSFNAYKQWY7QYRYMLLYARG4YRLLEFA"
 download = requests.get(url).content
 
 data = pd.read_csv(io.StringIO(download.decode('utf-8')))
 df = pd.DataFrame(data)
-p_t = df.iloc[:, 4]
-q_t = df.iloc[:, 3]
+p_t = df['logPD0']
+q_t = df['logD0']
 
 class Test(TestCase):
     def test_add(self):

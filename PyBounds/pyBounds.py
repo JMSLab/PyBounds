@@ -25,26 +25,30 @@ class Bounds:
 
     @staticmethod
     def kmean(k, vector):
+        """implementation of the k-mean function
+            :param k: the "k" in k-mean
+            :param vector: list of elements of which to take the k-mean of
+            :return: outputs the k-mean of all the elements in the list
+            """
         value = 0
         length = len(vector)
         if k == np.inf:
             return np.max(vector)
         else:
-            for i in vector:
-                value = value + i ** k
+            for elt in vector:
+                value = value + elt ** k
             return ((1 / length) * value) ** (1 / k)
 
     def delta_epsilon(self, theta):
+        """
+            implementation of the Delta_epsilon function as described in Section 2
+            :param theta: given slope
+            :return: Delta q_t - theta Delta p_t
+            """
         return np.subtract(np.diff(self.q), theta * np.diff(self.p))
 
     def M_hat_k(self, theta):
         return self.kmean(self.k, np.abs(self.delta_epsilon(theta)))
-
-    def B_tilde(self):
-        def f(B):
-            return self.overline_theta(B) - self.underline_theta(B)
-
-        return scipy.optimize.root_scalar(f, x0=0, x1=0.001).root
 
     def underline_theta(self, B):
         if self.k == np.inf:
@@ -55,7 +59,6 @@ class Bounds:
                     delta_p_t = self.p[i] - self.p[i - 1]
                     theta_underline_values.append(delta_q_t / delta_p_t - B / (abs(delta_p_t)))
             return max(theta_underline_values)
-
         else:
             def f(theta):
                 return self.M_hat_k(theta) - B
@@ -79,7 +82,22 @@ class Bounds:
             sol = scipy.optimize.root_scalar(f, x0=2, x1=1)
             return sol.root
 
+    def B_tilde(self):
+        """
+        calculates B_tilde used in underline{B} for the case k = infty; introduced in Proposition 1
+        :return: B_tilde operation in the case of k=infty as defined in Proposition 1
+        """
+        def f(B):
+            return self.overline_theta(B) - self.underline_theta(B)
+
+        return scipy.optimize.root_scalar(f, x0=0, x1=0.001).root
+
     def underline_B(self):
+        """
+        case k = infinity uses B_tilde as defined above
+        case k in (1, infinity): implement the definitions of underline{B} as stated in Proposition 1 and Proposition 2
+        :return: returns the underline_{B_k} operation as defined in Propositions 1 and 2
+        """
         if self.k == np.inf:
             delta_q = []
             for i in range(1, len(self.p)):
@@ -93,9 +111,16 @@ class Bounds:
             return minimize(self.M_hat_k, np.array([0])).fun
 
     def Theta_hat_k_B(self, B):
+        """
+        :param B: upper bound B provided
+        :return: output [underline{theta}_k, overline{theta}_k] for a given value
+            """
         return [self.underline_theta(B), self.overline_theta(B)]
 
     def intervals(self):
+        """
+        :return: for each i in the range [underline_B, maxB], output [underline{theta}_k, overline{theta}_k]
+        """
         array_of_intervals = []
         i = self.underline_B()
         while i <= self.maxB:
@@ -104,6 +129,9 @@ class Bounds:
         return array_of_intervals
 
     def plot(self):
+        """
+        :return: outputs a plot of B vs. theta similar to Figure 3
+        """
         lower_bounds = []
         upper_bounds = []
         x = []
@@ -125,8 +153,10 @@ class Bounds:
 
         ax.spines['bottom'].set_linestyle((0, (8, 5)))
         ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
         ax2.spines['left'].set_visible(False)
         ax2.spines['right'].set_visible(False)
+        ax2.spines['top'].set_visible(False)
         ax.yaxis.tick_left()
         ax2.yaxis.set_ticks_position('none')
         plt.subplots_adjust(wspace=0)
