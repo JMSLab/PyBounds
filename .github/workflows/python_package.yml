@@ -1,6 +1,12 @@
 name: Python package
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -39,5 +45,4 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }}
         flags: unittests
     - name: Run tests
-      run: |
-        ../test_main.py
+      run: python -m pytest
