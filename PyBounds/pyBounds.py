@@ -133,6 +133,7 @@ class Bounds:
         :return: outputs a plot of B vs. theta similar to Figure 3
         """
         import PyBounds.plot_settings as plot_settings
+
         lower_bounds = []
         upper_bounds = []
         x = []
