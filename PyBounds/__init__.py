@@ -1,5 +1,5 @@
 """
-    ``$YOUR_PACKAGE_NAME`` module
+    PyBounds module
     ============================
 
     Use it to import very important functions.
@@ -11,10 +11,8 @@
 
     .
     ├── __init__.py
-    ├── log  -> A directory that we use to log everything in development
-    │   └── main.log
-    ├── __log.py -> Logger comes from here
     ├── examples -> Data calculations stored here
+        ├── __init__.py
         ├── examples.py -> main file
     ├── pyBounds.py -> Main functions stored here
     ├── plot_settings.py -> Contains plotting specifics from pyBounds.py
@@ -23,9 +21,6 @@
         └── test_main.py -> main testing file
 
     LICENSE: GPLv3+
-    For more info please go on <https://github.com/$YOUR_NAME/$YOUR_PACKAGE_NAME>
-
 """
-from .__version__ import *
-
+from PyBounds.__version__ import *
 
