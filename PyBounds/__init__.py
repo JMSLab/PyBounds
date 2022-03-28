@@ -1,40 +1,26 @@
 """
-    ``$YOUR_PACKAGE_NAME`` module
+    PyBounds module
     ============================
 
     Use it to import very important functions.
 
-    This package was made for Lorem ipsum dolor sit amet, consectetur adipisicing
-    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-    aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-    id est laborum.
-
     Package structure
     -----------------
 
-    (Use the tree commande to generate the structure)
+    (Use the tree command to generate structure)
 
     .
     ├── __init__.py
-    ├── log  -> A directory that use to log everything in development
-    │   └── main.log
-    ├── __log.py -> Logger come from here
-    ├── pyBounds.py -> Main functions stored here
-    └── tests -> All test file
+    ├── examples -> Data calculations stored here
         ├── __init__.py
-        └── test_main.py
+        ├── examples.py -> main file
+    ├── pyBounds.py -> Main functions stored here
+    ├── plot_settings.py -> Contains plotting specifics from pyBounds.py
+    └── tests -> All test files
+        ├── __init__.py
+        └── test_main.py -> main testing file
 
     LICENSE: GPLv3+
-    For more info please go on <https://github.com/$YOUR_NAME/$YOUR_PACKAGE_NAME>
-
 """
-from .__version__ import *
-# from .pyBounds import add
-
-# All your function that need to be accessible
-# __all__ = ['add']
-
+from PyBounds.__version__ import *
 
