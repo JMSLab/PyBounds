@@ -70,7 +70,7 @@ class Bounds:
             def f(theta):
                 return self.M_hat_k(theta) - B
 
-            sol = scipy.optimize.root_scalar(f, x0=-2, x1=-1)
+            sol = scipy.optimize.root_scalar(f, x0=-100, x1=-99)
             return sol.root
 
     def overline_theta(self, B):
@@ -94,7 +94,7 @@ class Bounds:
             def f(theta):
                 return self.M_hat_k(theta) - B
 
-            sol = scipy.optimize.root_scalar(f, x0=2, x1=1)
+            sol = scipy.optimize.root_scalar(f, x0=100, x1=99)
             return sol.root
 
     def B_tilde(self):
@@ -141,6 +141,8 @@ class Bounds:
         """
         array_of_intervals = []
         i = self.underline_B()
+        if i > self.maxB:
+            raise Exception("No interval compatible with given bounds")
         while i <= self.maxB:
             array_of_intervals.append(self.Theta_hat_k_B(i))
             i += (self.maxB - self.underline_B()) / self.ngridpoints
@@ -156,6 +158,8 @@ class Bounds:
         upper_bounds = []
         x = []
         i = self.underline_B()
+        if i > self.maxB:
+            raise Exception("No interval compatible with given bounds")
         while i <= self.maxB:
             x.append(i)
             lower_bounds.append(self.underline_theta(i))
