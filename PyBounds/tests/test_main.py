@@ -6,7 +6,7 @@ import io
 
 import PyBounds.pyBounds as pyBounds
 
-url = "https://raw.githubusercontent.com/JMSLab/PyBounds/master/PyBounds/tests/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUAWJSRJAIEBR462IPCYSXGQNQ"
+url = "https://raw.githubusercontent.com/JMSLab/PyBounds/master/PyBounds/examples/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUAD3NPJA3Y7TRBFP2KYS4RG4Q"
 download = requests.get(url).content
 
 data = pd.read_csv(io.StringIO(download.decode('utf-8')))
@@ -60,6 +60,26 @@ class Test(TestCase):
         self.assertAlmostEqual(k9.underline_theta(0.08), 0.92, delta=0.000001)
         self.assertAlmostEqual(k9.overline_theta(0.08), 1.08, delta=0.000001)
 
+        # testing k-mean
+        self.assertAlmostEqual(k7.kmean(2, p_t2), np.sqrt(5/2), delta=0.000001)
+        self.assertAlmostEqual(k7.kmean(5, p_t2), (33 / 2) ** (1/5), delta=0.000001)
+
+        # testing delta_epsilon
+        self.assertAlmostEqual(k7.delta_epsilon(theta=4), -3, delta=0.000001)
+        self.assertAlmostEqual(k7.delta_epsilon(theta=10), -9, delta=0.000001)
+
+        # testing M_hat_k
+        self.assertAlmostEqual(k7.M_hat_k(theta=4), 3, delta=0.000001)
+        self.assertAlmostEqual(k9.M_hat_k(theta=10), 9, delta=0.000001)
+
+        # testing B_tilde
+        self.assertAlmostEqual(k7.B_tilde(), 0, delta=0.000001)
+        self.assertAlmostEqual(k9.B_tilde(), 0, delta=0.000001)
+
+        # testing underline_B
+        self.assertAlmostEqual(k7.underline_B(), 0, delta=0.000001)
+        self.assertAlmostEqual(k9.underline_B(), 0, delta=0.000001)
+
         p_t3 = [6, 7]
         q_t3 = [10, 12]
         k7 = pyBounds.Bounds(p_t3, q_t3, k=7, maxB=0.1)
@@ -68,6 +88,29 @@ class Test(TestCase):
         k9 = pyBounds.Bounds(p_t3, q_t3, k=9, maxB=0.1)
         self.assertAlmostEqual(k9.underline_theta(0.08), 1.92, delta=0.000001)
         self.assertAlmostEqual(k9.overline_theta(0.08), 2.08, delta=0.000001)
+
+        # testing kmean
+        self.assertAlmostEqual(k7.kmean(2, p_t3), np.sqrt(85 / 2), delta=0.000001)
+        self.assertAlmostEqual(k7.kmean(2, q_t3), np.sqrt(244 / 2), delta=0.000001)
+        self.assertAlmostEqual(k7.kmean(5, p_t3), (24583 / 2) ** (1/5), delta=0.000001)
+        self.assertAlmostEqual(k7.kmean(5, q_t3), (348832 / 2) ** (1/5), delta=0.000001)
+
+        # testing delta_epsilon
+        self.assertAlmostEqual(k7.delta_epsilon(7), -5, delta=0.000001)
+        self.assertAlmostEqual(k7.delta_epsilon(13), -11, delta=0.000001)
+
+        # testing M_hat_k
+        self.assertAlmostEqual(k7.M_hat_k(theta=7), 5, delta=0.000001)
+        self.assertAlmostEqual(k9.M_hat_k(theta=13), 11, delta=0.000001)
+
+        # testing B_tilde
+        self.assertAlmostEqual(k7.B_tilde(), 0, delta=0.000001)
+        self.assertAlmostEqual(k9.B_tilde(), 0, delta=0.000001)
+
+        # testing underline_B
+        self.assertAlmostEqual(k7.underline_B(), 0, delta=0.000001)
+        self.assertAlmostEqual(k9.underline_B(), 0, delta=0.000001)
+
         return
 
 
