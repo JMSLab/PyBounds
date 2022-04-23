@@ -8,21 +8,21 @@ package_name = glob.glob('./*/__init__.py')[0]
 package_name = package_name.replace('./', '')
 package_name = package_name.replace('/__init__.py', '')
 
-PACKAGE_NAME = package_name  # The name of the package
+PACKAGE_NAME = 'PyBounds'  # The name of the package
 VERSION = '0.0.1'
 PYTHON_VERSION = '~=3.6'  # Any python 3 version since python3.6
-SHORT_DESCRIPTION = ''
+SHORT_DESCRIPTION = 'Generates plots similar to those in Figure 4 of Petterson et al. (2022a).'
 DESCRIPTION = open('README.md').read()
-AUTHOR = ''
-MAIL = ''
-PROJECT_URL = 'https://github.com/$url_name/$project@latest'
+AUTHOR = 'Petterson, Marco Stenborg, David Seim, Nathan Sun, and Jesse M. Shapiro'
+MAIL = 'marco_stenborg_petterson@brown.edu, david.seim@ne.su.se, nsun@college.harvard.edu, jesse_shapiro@fas.harvard.edu'
+PROJECT_URL = 'https://github.com/JMSLab/PyBounds@latest'
 LICENCE = 'GPLv3+'
 DEVELOPMENT_STATUS = 'Planning'
 ENVIRONMENT = []
 FRAMEWORK = []
 AUDIENCE = ['Developers']
 PROGRAMMING_LANGUAGE = ['Pythonv3.6', 'Pythonv3.7', 'Pythonv3.8']
-KEYWORDS = ['test', 'test2']
+KEYWORDS = ['restrictions on shocks', 'demand', 'supply', 'identification']
 
 # To add more classifier, like topic go on <https://pypi.org/pypi?action=list_classifiers>
 classifiers = []
