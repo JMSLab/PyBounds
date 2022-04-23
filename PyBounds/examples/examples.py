@@ -6,13 +6,14 @@ import io
 import PyBounds.pyBounds as pyBounds
 
 # import data: p_t, q_t
-url = "https://raw.githubusercontent.com/JMSLab/PyBounds/4448de331bae03d55d096493a9a4cdb142a59553/PyBounds/examples/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUBHQDO5LHCPCSVDT4OYSJ6IUQ"
+url = "https://raw.githubusercontent.com/JMSLab/PyBounds/master/PyBounds/tests/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUALONIOVPAAPFYWH5MYTEGSEA"
 download = requests.get(url).content
 
 data = pd.read_csv(io.StringIO(download.decode('utf-8')))
 df = pd.DataFrame(data)
 p_t = df['logPD0']
 q_t = df['logD0']
+
 
 if __name__ == '__main__':
     kinf = pyBounds.Bounds(p_t, q_t, k=np.inf, maxB=0.1)
