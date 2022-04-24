@@ -9,7 +9,7 @@ package_name = package_name.replace('./', '')
 package_name = package_name.replace('/__init__.py', '')
 
 PACKAGE_NAME = 'PyBounds'  # The name of the package
-VERSION = '0.0.1'
+VERSION = '1.0.0'
 PYTHON_VERSION = '~=3.6'  # Any python 3 version since python3.6
 SHORT_DESCRIPTION = 'Generates plots similar to those in Figure 4 of Petterson et al. (2022a).'
 DESCRIPTION = open('README.md').read()
