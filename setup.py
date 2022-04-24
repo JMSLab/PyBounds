@@ -11,7 +11,7 @@ package_name = package_name.replace('/__init__.py', '')
 PACKAGE_NAME = 'PyBounds'  # The name of the package
 VERSION = '1.0.0'
 PYTHON_VERSION = '~=3.6'  # Any python 3 version since python3.6
-SHORT_DESCRIPTION = 'Generates plots similar to those in Figure 4 of Petterson et al. (2022a).'
+SHORT_DESCRIPTION = 'Bounds on a slope from size restrictions on econommic shocks.'
 DESCRIPTION = open('README.md').read()
 AUTHOR = 'Petterson, Marco Stenborg, David Seim, Nathan Sun, and Jesse M. Shapiro'
 MAIL = 'marco_stenborg_petterson@brown.edu, david.seim@ne.su.se, nsun@college.harvard.edu, jesse_shapiro@fas.harvard.edu'

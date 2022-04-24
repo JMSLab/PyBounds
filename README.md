@@ -21,7 +21,7 @@ Usage example
 -------------
 
 ```
-python Pybounds/examples/examples.py
+python PyBounds/examples/examples.py
 ```
 
 Generates plots similar to those in Figure 4 of Petterson et al. (2022a).
