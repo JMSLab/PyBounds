@@ -6,7 +6,7 @@ import io
 
 import PyBounds.pyBounds as pyBounds
 
-url = "https://raw.githubusercontent.com/JMSLab/PyBounds/master/PyBounds/tests/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUBBF6WVSIOUKLYLCI4YTEWE3A"
+url = "https://raw.githubusercontent.com/JMSLab/PyBounds/142a5394e722914537fe1b6aac1c44b855166674/PyBounds/tests/roberts_schlenker_2013.csv?token=GHSAT0AAAAAABSA4OUBZ7NFDL22PRB2NYNSYTFPO5A"
 download = requests.get(url).content
 
 data = pd.read_csv(io.StringIO(download.decode('utf-8')))
