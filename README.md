@@ -1,7 +1,7 @@
 PyBounds
 ========
 
-Package to calculate bounds on a slope from size restrictions on economic shocks, following Petterson Seim Shapiro (2022).
+Package to calculate bounds on a slope from size restrictions on economic shocks, following Petterson, Seim, and Shapiro (2022).
 
 Installation
 ------------
