@@ -9,7 +9,7 @@
  - Change 2
  - ...
 
-# Additionnal Info
+# Additional Info
 
  - Any additionnal info or context.
  <!--

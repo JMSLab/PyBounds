@@ -8,21 +8,21 @@ package_name = glob.glob('./*/__init__.py')[0]
 package_name = package_name.replace('./', '')
 package_name = package_name.replace('/__init__.py', '')
 
-PACKAGE_NAME = package_name  # The name of the package
-VERSION = '0.0.1'
+PACKAGE_NAME = 'PyBounds'  # The name of the package
+VERSION = '1.0.0'
 PYTHON_VERSION = '~=3.6'  # Any python 3 version since python3.6
-SHORT_DESCRIPTION = ''
+SHORT_DESCRIPTION = 'Bounds on a slope from size restrictions on economic shocks.'
 DESCRIPTION = open('README.md').read()
-AUTHOR = ''
-MAIL = ''
-PROJECT_URL = 'https://github.com/$url_name/$project@latest'
+AUTHOR = 'Marco Stenborg Petterson, David Seim, and Jesse M. Shapiro, Nathan Sun'
+MAIL = 'marco_stenborg_petterson@brown.edu, david.seim@ne.su.se, jesse_shapiro@fas.harvard.edu, nsun@college.harvard.edu'
+PROJECT_URL = 'https://github.com/JMSLab/PyBounds@latest'
 LICENCE = 'GPLv3+'
 DEVELOPMENT_STATUS = 'Planning'
 ENVIRONMENT = []
 FRAMEWORK = []
 AUDIENCE = ['Developers']
 PROGRAMMING_LANGUAGE = ['Pythonv3.6', 'Pythonv3.7', 'Pythonv3.8']
-KEYWORDS = ['test', 'test2']
+KEYWORDS = ['restrictions on shocks', 'demand', 'supply', 'identification']
 
 # To add more classifier, like topic go on <https://pypi.org/pypi?action=list_classifiers>
 classifiers = []
