@@ -20,3 +20,12 @@ docs/_build/
 
 # OS files
 *.DS_Store
+
+# installation files
+build/
+./build/
+PyBounds.egg-info/
+./PyBounds.egg-info
+/dist
+./dist
+
